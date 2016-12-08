@@ -59,7 +59,7 @@ func NewTemplate(template, startTag, endTag string) (*Template) {
 	}
 
 	t.bytesBufferPool.New = newBytesBuffer
-	return &t, nil
+	return &t
 }
 
 func newBytesBuffer() interface{} {
