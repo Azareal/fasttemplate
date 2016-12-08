@@ -42,7 +42,7 @@ func New(template, startTag, endTag string) *Template {
 //
 // The returned template can be executed by concurrently running goroutines
 // using Execute* methods.
-func NewTemplate(template, startTag, endTag string) (*Template, error) {
+func NewTemplate(template, startTag, endTag string) (*Template) {
 	var t Template
 
 	if len(startTag) == 0 {
@@ -67,7 +67,7 @@ func NewTemplate(template, startTag, endTag string) (*Template, error) {
 		s = s[n+len(a):]
 		n = bytes.Index(s, b)
 		if n < 0 {
-			return nil, fmt.Errorf("Cannot find end tag=%q in the template=%q starting from %q", endTag, template, s)
+			return nil
 		}
 
 		t.tags = append(t.tags, string(s[:n]))
